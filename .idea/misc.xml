@@ -3,11 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable-v24/red_dot.xml" value="0.1" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable-v24/yellow_dot.xml" value="0.1" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable/edit_test_shape.xml" value="0.1" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable/green_dot.xml" value="0.1" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable/red_dot.xml" value="0.1" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable/yellow_dot.xml" value="0.1" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/drawable/yes_button.xml" value="0.1" />
         <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
-        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/fragment_create_notes.xml" value="0.13541666666666666" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/dialog_delete.xml" value="0.2" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/fragment_create_notes.xml" value="0.2" />
         <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/fragment_edit_notes.xml" value="0.15896739130434784" />
         <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/fragment_home.xml" value="0.1640625" />
+        <entry key="..\:/AllProjects/NotesApp/app/src/main/res/layout/item_notes.xml" value="0.2480916030534351" />
       </map>
     </option>
   </component>

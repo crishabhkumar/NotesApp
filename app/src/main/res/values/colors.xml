@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backg_color">#242424</color>
     <color name="red_color">#FF5151</color>
+    <color name="green_color">#11D998</color>
+    <color name="yellow_color">#d9D92F</color>
 
 </resources>
