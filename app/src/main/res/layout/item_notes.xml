@@ -12,6 +12,7 @@
         app:cardCornerRadius="10dp">
 
         <View
+            android:id="@+id/viewPriority"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="right"
@@ -25,6 +26,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/itemTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bold"
@@ -34,6 +36,7 @@
                 android:textSize="17dp" />
 
             <TextView
+                android:id="@+id/itemSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -43,6 +46,7 @@
                 android:textSize="14dp" />
 
             <TextView
+                android:id="@+id/itemDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
