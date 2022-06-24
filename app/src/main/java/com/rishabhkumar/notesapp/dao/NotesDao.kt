@@ -14,7 +14,7 @@ interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNotes(note:Notes)
 
-    @Query("DELETE FROM Notes WHERE id = id")
+    @Query("DELETE FROM Notes WHERE id = :id")
     fun deleteNotes(id:Int)
 
     @Update
