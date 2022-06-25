@@ -5,15 +5,121 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.rishabhkumar.notesapp.R
+import com.rishabhkumar.notesapp.databinding.FragmentEditNotesBinding
+import com.rishabhkumar.notesapp.model.Notes
+import com.rishabhkumar.notesapp.viewmodel.NotesViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EditNotesFragment : Fragment() {
+
+    val oldNotes by navArgs<EditNotesFragmentArgs>()
+    lateinit var binding: FragmentEditNotesBinding
+    var priority: String = "1"
+    val viewModel : NotesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_notes, container, false)
+        binding = FragmentEditNotesBinding.inflate(layoutInflater, container, false)
+
+        getData()
+        priorityChange()
+
+
+
+        binding.btnEditSaveNotes.setOnClickListener {
+            updateNotes(it)
+        }
+
+
+        return binding.root
+    }
+
+    private fun updateNotes(it: View?) {
+        val title = binding.edtEditTitle.text.toString()
+        val subTitle = binding.edtEditSubTitle.text.toString()
+        val notes = binding.edtEditNotes.text.toString()
+        val notesCurrentDate: String = getCurrentDate()
+
+        val data = Notes(
+            oldNotes.data.id,
+            title = title,
+            subtitle = subTitle,
+            notes = notes,
+            date = notesCurrentDate.toString(),
+            priority = priority
+        )
+        viewModel.updateNotes(data)
+
+        Toast.makeText(requireContext(),"Note updated.", Toast.LENGTH_SHORT).show()
+        //finishing the fragment after creation of note
+        Navigation.findNavController(it!!).navigate(R.id.action_editNotesFragment_to_homeFragment)
+
+    }
+    private fun getCurrentDate() : String{
+        val c = Calendar.getInstance().time
+        println("Current time => $c")
+        val df = SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault())
+        val formattedDate = df.format(c)
+
+        return formattedDate
+    }
+
+    //function for retrieving the data from home fragment
+    private fun getData(){
+        binding.edtEditTitle.setText(oldNotes.data.title)
+        binding.edtEditSubTitle.setText(oldNotes.data.subtitle)
+        binding.edtEditNotes.setText(oldNotes.data.notes)
+
+        when(oldNotes.data.priority){
+            "1"->{
+                priority = "1"
+                binding.pGreenEdit.setImageResource(R.drawable.done_icon)
+                binding.pRedEdit.setImageResource(0)
+                binding.pYellowEdit.setImageResource(0)
+            }
+            "2"->{
+                priority = "2"
+                binding.pRedEdit.setImageResource(R.drawable.done_icon)
+                binding.pGreenEdit.setImageResource(0)
+                binding.pYellowEdit.setImageResource(0)
+            }
+            "3"->{
+                priority = "3"
+                binding.pYellowEdit.setImageResource(R.drawable.done_icon)
+                binding.pGreenEdit.setImageResource(0)
+                binding.pRedEdit.setImageResource(0)
+            }
+        }
+    }
+
+    private fun priorityChange(){
+        //when someone wants to change priority of task or notes
+        binding.pGreenEdit.setOnClickListener {
+            priority = "1"
+            binding.pGreenEdit.setImageResource(R.drawable.done_icon)
+            binding.pRedEdit.setImageResource(0)
+            binding.pYellowEdit.setImageResource(0)
+        }
+        binding.pRedEdit.setOnClickListener {
+            priority = "2"
+            binding.pRedEdit.setImageResource(R.drawable.done_icon)
+            binding.pGreenEdit.setImageResource(0)
+            binding.pYellowEdit.setImageResource(0)
+        }
+        binding.pYellowEdit.setOnClickListener {
+            priority = "3"
+            binding.pYellowEdit.setImageResource(R.drawable.done_icon)
+            binding.pGreenEdit.setImageResource(0)
+            binding.pRedEdit.setImageResource(0)
+        }
     }
 }

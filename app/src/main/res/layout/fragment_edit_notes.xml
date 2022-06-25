@@ -64,6 +64,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/edtEditNotes"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_marginTop="10dp"
