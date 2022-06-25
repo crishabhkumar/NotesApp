@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rishabhkumar.notesapp.R
 import com.rishabhkumar.notesapp.databinding.FragmentHomeBinding
 import com.rishabhkumar.notesapp.ui.Adapter.NotesAdapter
@@ -25,11 +26,37 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-        viewModel.getNotes().observe(viewLifecycleOwner,{ notesList ->
-            binding.recyclerViewAllNotes.layoutManager = GridLayoutManager(requireContext(),2)
-            binding.recyclerViewAllNotes.adapter = NotesAdapter(requireContext(),notesList)
-        })
 
+        viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
+            binding.recyclerViewAllNotes.layoutManager = GridLayoutManager(requireContext(), 2)
+            binding.recyclerViewAllNotes.adapter = NotesAdapter(requireContext(), notesList)
+        }
+
+        binding.txtHigh.setOnClickListener {
+            viewModel.getHighNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.recyclerViewAllNotes.layoutManager = GridLayoutManager(requireContext(), 2)
+                binding.recyclerViewAllNotes.adapter = NotesAdapter(requireContext(), notesList)
+            }
+        }
+        binding.txtMedium.setOnClickListener {
+            viewModel.getMediumNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.recyclerViewAllNotes.layoutManager = GridLayoutManager(requireContext(), 2)
+                binding.recyclerViewAllNotes.adapter = NotesAdapter(requireContext(), notesList)
+            }
+        }
+        binding.txtLow.setOnClickListener {
+            viewModel.getLowNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.recyclerViewAllNotes.layoutManager = GridLayoutManager(requireContext(), 2)
+                binding.recyclerViewAllNotes.adapter = NotesAdapter(requireContext(), notesList)
+            }
+        }
+
+        binding.btnAllNotes.setOnClickListener {
+            viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.recyclerViewAllNotes.layoutManager = GridLayoutManager(requireContext(), 2)
+                binding.recyclerViewAllNotes.adapter = NotesAdapter(requireContext(), notesList)
+            }
+        }
 
         binding.btnAddNotes.setOnClickListener {
             Navigation.findNavController(it)
